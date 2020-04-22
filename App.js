@@ -1,114 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react'
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export default class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={{flexDirection:'row'}}>
+            <View style={styles.divider}/>
+            <Text style={styles.title}>
+                Todo <Text style={{fontWeight:"300", color:'#3498db'}}>Lists </Text>
+            </Text>
+            <View style={styles.divider}/>
+        </View>
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+        <View style={{marginVertical:48}}>
+          <TouchableOpacity style={styles.addList}>
+            <Icon name="plus" size={16} color="#3498db"/>
+          </TouchableOpacity>
+          <Text style={styles.add}>Add List</Text>
+        </View>
+        
+
+      </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
-export default App;
+  container:{
+    flex:1,
+    backgroundColor:'#fff',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  divider:{
+      backgroundColor:'#add8e6',
+      height:1,
+      flex:1,
+      alignSelf:'center'
+  },
+  title:{
+      fontSize:38,
+      fontWeight:'800',
+      paddingHorizontal:64,
+      color:'black'
+  },
+  addList:{
+    borderWidth:2,
+    borderColor: '#add8e6',
+    borderRadius:4,
+    padding:15,
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  add:{
+    color:'#2980b9'
+  }
+
+})
