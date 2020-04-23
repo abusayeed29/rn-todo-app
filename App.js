@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, FlatList } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import tempData from './TempData'
+import TodoList from './components/TodoList'
 
 export default class App extends Component {
   render() {
@@ -20,6 +22,16 @@ export default class App extends Component {
             <Icon name="plus" size={16} color="#3498db"/>
           </TouchableOpacity>
           <Text style={styles.add}>Add List</Text>
+        </View>
+        <View style={{height:275,paddingLeft:25}}>
+            <FlatList
+                data={tempData}
+                keyExtractor={item => item.name}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item })=><TodoList list = {item} />}
+
+            />
         </View>
         
 
@@ -57,7 +69,10 @@ const styles = StyleSheet.create({
     justifyContent:'center'
   },
   add:{
-    color:'#2980b9'
+    color:'#2980b9',
+    fontWeight:"600",
+    fontSize: 14,
+    marginTop:8,
   }
 
 })
